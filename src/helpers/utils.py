@@ -2,6 +2,11 @@ import logging
 import os
 from dotenv import load_dotenv
 import datetime
+import pyspark 
+from pyspark.sql import SparkSession, SQLContext
+from pyspark.context import SparkContext
+from pyspark.sql.functions import * 
+from pyspark.sql.types import *
 
 def initLogger(ASOFDATE='19900101'): 
     # print(os.getenv('LOGFILE'),str(ASOFDATE))
@@ -28,3 +33,17 @@ def getExecTime():
     ASOFDATE = str(d.strftime('%Y')+d.strftime("%m") +
                    f'{int(d.strftime("%d")):02d}')
     return(ASOFDATE)
+
+def initSpark():
+    spark = SparkSession.builder.master('local[1]').appName('Covid-dummy').getOrCreate()
+    sc = spark.sparkContext
+    sc.setLogLevel('ERROR')
+    return spark 
+
+def readFile(spark , logger, filePath ) : 
+    try : 
+        df = spark.read.option('header',True).option('inferSchema',True).csv(filePath)
+        return df 
+    except Exception as ex : 
+        logger.info('Error in reading file : '+ex)
+
