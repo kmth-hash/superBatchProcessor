@@ -2,10 +2,15 @@ import logging
 import os
 from dotenv import load_dotenv
 import datetime
+import findspark
+findspark.init()
+
+from random import randint , choice 
+
 import pyspark 
 from pyspark.sql import SparkSession, SQLContext
 from pyspark.context import SparkContext
-from pyspark.sql.functions import * 
+from pyspark.sql.functions import *
 from pyspark.sql.types import *
 
 def initLogger(ASOFDATE='19900101'): 
@@ -22,11 +27,11 @@ def initLogger(ASOFDATE='19900101'):
 
 def initEnv(stage='DEV'):
     if stage=='PROD' : 
-        load_dotenv('src\.env.prod')
+        load_dotenv('src/.env.prod')
     elif stage=='DEV' : 
-        load_dotenv('src\.env.dev')
+        load_dotenv('src/.env.dev')
     else : 
-        load_dotenv('src\.env.dev')
+        load_dotenv('src/.env.dev')
 
 def getExecTime():
     d = datetime.datetime.now()
@@ -47,3 +52,37 @@ def readFile(spark , logger, filePath ) :
     except Exception as ex : 
         logger.info('Error in reading file : '+ex)
 
+
+def addStatustoDF(userDF) : 
+    
+    def generateStatus(z):
+        return str(choice(['Dead' , 'Recovered' , 'Affected']))
+    
+    statusUDF = udf(lambda z : generateStatus(z) , StringType())
+    userDF = userDF.withColumn('status' , statusUDF(col('userName')) )
+    return userDF
+
+def addAgetoDF(userDF) : 
+    def generateAge(z):
+        return str(randint(5,85))
+
+    ageDF = udf(lambda z: generateAge(z) , StringType())
+    userDF = userDF.withColumn('age' , ageDF(col('userName')))
+    return userDF 
+
+def addMedstoDF(userDF) : 
+    def generateMeds(z):
+        return choice(['Covaxin', 'Covishield', 'Sputnik'])
+
+    medsDF = udf(lambda z: generateMeds(z) , StringType()) 
+    userDF = userDF.withColumn('med' , medsDF(col('userName')))
+    return userDF 
+
+
+def addMedCounttoDF(userDF) : 
+    def generateCount(z):
+        return str(choice(['0' , '1' , '2']))
+
+    ageDF = udf(lambda z: generateCount(z) , StringType())
+    userDF = userDF.withColumn('medCount' , ageDF(col('userName')))
+    return userDF
