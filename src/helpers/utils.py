@@ -124,5 +124,10 @@ def create_file(spark ,filename) :
         response = fs.create(hadoop.fs.Path(filename))
         response.close() 
 
+def deleteData(spark , location) : 
+    hadoop , _ , fs = configure_hadoop(spark) 
+    if fs.exists(hadoop.fs.Path(location)) : 
+        fs.delete(hadoop.fs.Path(location))
+
 
 
