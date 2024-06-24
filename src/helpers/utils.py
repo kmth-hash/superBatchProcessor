@@ -104,10 +104,11 @@ def list_files(spark , srDir ) :
 
     for fileItr in fs.listStatus(hadoop.fs.Path(srDir)) : 
         if fileItr.isFile() : 
-            print(fileItr.getPath(),end='\n\n')
+            # print(fileItr.getPath(),end='\n\n')
             files.append(fileItr.getPath())
     if not files : 
         print("No files found in Directory ")
+    return files
 
 
 def create_Dir(spark ,fileDir) : 
@@ -124,10 +125,28 @@ def create_file(spark ,filename) :
         response = fs.create(hadoop.fs.Path(filename))
         response.close() 
 
-def deleteData(spark , location) : 
-    hadoop , _ , fs = configure_hadoop(spark) 
-    if fs.exists(hadoop.fs.Path(location)) : 
-        fs.delete(hadoop.fs.Path(location))
+def deleteData(spark , logger , location) : 
+    try:
+        hadoop , _ , fs = configure_hadoop(spark)
+        if fs.exists(hadoop.fs.Path(location)) : 
+            fs.delete(hadoop.fs.Path(location))
+    except:
+        logger.info('Error in Delete operation. ')
 
+def copyFileToDest(spark , logger , srcLoc , destLoc , fileName) : 
+    try:
+        hadoop , conf , fs = configure_hadoop(spark) 
+        dataIn = fs.open(hadoop.fs.Path(srcLoc))
+        dataOut = fs.create(hadoop.fs.Path(destLoc+'/'+fileName)) 
+        hadoop.io.IOUtils.copyBytes(dataIn, dataOut, conf, False)
+        logger.info("File data completed successfully.")
+
+        
+    except:
+        logger.info('Error in copying data ')
+    finally:
+        dataOut.close()
+
+    
 
 
