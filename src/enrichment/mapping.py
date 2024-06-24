@@ -23,7 +23,7 @@ def preprocess(spark , ASOFDATE , logger ):
     userDF = addMedCounttoDF(userDF)
     
     # userDF.show()
-    userDF = userDF.withColumn("vaccinated" , when(col('medCount')>0 , "Vaccinated").otherwise("Not Vaccinated"))
+    userDF = userDF.withColumn("vaccineStatus" , when(col('medCount')>0 , "Vaccinated").otherwise("Not Vaccinated"))
     
     sampleDF = locationDF.crossJoin(userDF).sample(0.2)
     
@@ -42,31 +42,36 @@ def countryStats(spark , logger , ASOFDATE , srcDF ) :
     
     groupedDF = srcDF.groupby("country").pivot('status').count()
 
-    vacGroupDF = srcDF.groupby('country').pivot('vaccinated').count()
+    vacGroupDF = srcDF.groupby('country').pivot('vaccineStatus').count()
     vacGroupDF = vacGroupDF.withColumnRenamed('country' , 'vacCountry')
-    # vacGroupDF.show(5)
-    # print(vacGroupDF.count())
-    # exit(0)
+    
     srcDF = srcDF.drop("Gender" , "userName")
     srcDF = srcDF.withColumnRenamed('country' , 'srcCountry')
     srcDF = srcDF.dropDuplicates(['srcCountry'])
     
     srcDF = srcDF.join(groupedDF , groupedDF['country']==srcDF['srcCountry'] , 'right').join(vacGroupDF , vacGroupDF['vacCountry']==srcDF['srcCountry'],'left' )
-    # srcDF.show(5)
-    # print(srcDF.printSchema())
-    
-    srcDF = srcDF.distinct().drop('medCount' , 'srcCountry', 'vacCountry','med' , 'status')
+        
+    srcDF = srcDF.distinct().drop('medCount' , 'srcCountry', 'vacCountry','med' , 'status','vaccineStatus')
     logger.info(f'Distinct records found : {srcDF.count()}')
-    # logger.info(srcDF.collect())
-    # srcDF.show()
+    logger.info(srcDF.collect()[5])
+    # srcDF.show(5)
+    
     return srcDF 
-
-
+ 
 
 
 def mainSparkProcess(spark , ASOFDATE , logger ): 
-    cleanedDF = preprocess(spark , ASOFDATE , logger )
-    countryStats(spark , logger , ASOFDATE , cleanedDF )
+    # cleanedDF = preprocess(spark , ASOFDATE , logger )
+    # finalDF1 = countryStats(spark , logger , ASOFDATE , cleanedDF )
+    
+    # finalDF1.coalesce(1).write.csv("outbound/tmp")
+
+    list_files(spark , '/home/ubuntu/prj/superBatchProcessor/superBatchProcessor/outbound/tmp') #testing 
+    
+    logger.info("File read tmp ")
+
+
+
 
 
 

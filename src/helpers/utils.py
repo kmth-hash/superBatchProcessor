@@ -86,3 +86,32 @@ def addMedCounttoDF(userDF) :
     ageDF = udf(lambda z: generateCount(z) , StringType())
     userDF = userDF.withColumn('medCount' , ageDF(col('userName')))
     return userDF
+
+
+# Get hadoop instance 
+# Instanciate File system 
+def configure_hadoop(spark):
+    hadoop = spark.sparkContext._jvm.org.apache.hadoop  
+    conf = hadoop.conf.Configuration()
+    fs = hadoop.fs.FileSystem.get(conf)
+    return hadoop, conf, fs 
+
+
+# List all files in the Directory 
+def list_files(spark , srDir ) : 
+    hadoop , conf , fs = configure_hadoop(spark )
+    files = [] 
+
+    for fileItr in fs.listStatus(hadoop.fs.Path(srDir)) : 
+        if fileItr.isFile() : 
+            print(fileItr.getPath(),end='\n\n')
+            files.append(fileItr.getPath())
+    if not files : 
+        print("No files found in Directory ")
+
+
+
+
+
+
+
