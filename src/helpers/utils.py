@@ -110,8 +110,19 @@ def list_files(spark , srDir ) :
         print("No files found in Directory ")
 
 
+def create_Dir(spark ,fileDir) : 
+    hadoop, _, fs = configure_hadoop(spark)
+    if not fs.exists(hadoop.fs.Path(fileDir)):
+        print(hadoop.fs.Path(fileDir))
+        fs.mkdirs(hadoop.fs.Path(fileDir))
+        # out_stream.close() 
 
-
+def create_file(spark ,filename) : 
+    hadoop, _, fs = configure_hadoop(spark)
+    if not fs.exists(hadoop.fs.Path(filename)):
+        print(hadoop.fs.Path(filename))
+        response = fs.create(hadoop.fs.Path(filename))
+        response.close() 
 
 
 
