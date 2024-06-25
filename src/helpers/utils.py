@@ -147,6 +147,21 @@ def copyFileToDest(spark , logger , srcLoc , destLoc , fileName) :
     finally:
         dataOut.close()
 
-    
 
+def tmpFileCleanUp(spark , logger , srcDir , destDir , destFileName):
+    srcFile = srcDir
+    
+    fileList = list_files(spark , srcDir)
+    hadoop , _ , fs = configure_hadoop(spark)
+    for f in fileList : 
+        if f.getName().startswith('part') and f.getName().endswith('.csv')  : 
+            srcFile += f'/{f.getName()}'
+    logger.info("File read tmp ")
+    print('File copy start ')
+    copyFileToDest(spark , logger , srcFile , destDir , destFileName )
+    print('File copy end')
+    for f in fileList : 
+        print(f'Deleting file {f.getName()}')
+        deleteData(spark , logger , f'{srcDir}/{f.getName()}')
+    logger.info('tmp file deleted from inbound ')
 

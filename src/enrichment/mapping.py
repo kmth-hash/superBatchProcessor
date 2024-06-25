@@ -1,6 +1,4 @@
 from helpers.utils import * 
-from pyspark.sql.functions import col, udf , count as sqlfncount
-from pyspark.sql.types import StringType
 
 def preprocess(spark , ASOFDATE , logger ):
     res = None 
@@ -62,32 +60,16 @@ def countryStats(spark , logger , ASOFDATE , srcDF ) :
 
 def mainSparkProcess(spark , ASOFDATE , logger ): 
 
-    srcDir = f'/home/ubuntu/prj/superBatchProcessor/superBatchProcessor/src/outbound/tmp/{ASOFDATE}' 
-    destDir = f'/home/ubuntu/prj/superBatchProcessor/superBatchProcessor/src/outbound/tmp/{ASOFDATE}' 
-    destFileName = f'final_{ASOFDATE}.csv'
+    srcDir = f"{os.getenv('OUTBOUNDTMP')}"
+    destDir = f"{os.getenv('OUTBOUND')}"
+    destFileName = os.getenv('FINALFILE').replace('%s', ASOFDATE)
+    
 
     cleanedDF = preprocess(spark , ASOFDATE , logger )
     finalDF1 = countryStats(spark , logger , ASOFDATE , cleanedDF )
     
     finalDF1.coalesce(1).write.csv(f"{srcDir}")
 
-    srcFile = srcDir
-    
-    fileList = list_files(spark , srcDir)
-    hadoop , _ , fs = configure_hadoop(spark)
-    for f in fileList : 
-        if f.getName().startswith('part') and f.getName().endswith('.csv')  : 
-            srcFile += f'/{f.getName()}'
-    logger.info("File read tmp ")
-    print('File copy start ')
-    copyFileToDest(spark , logger , srcFile , destDir , destFileName )
-    print('File copy end')
-    for f in fileList : 
-        print(f'Deleting file {f.getName()}')
-        deleteData(spark , logger , f'{srcDir}/{f.getName()}')
-    logger.info('tmp file deleted from inbound ')
-
-
-
+    tmpFileCleanUp(spark , logger , srcDir, destDir, destFileName)
 
 
