@@ -23,7 +23,12 @@ def loadtoDB(logger , tableName , fileData, region ):
             bw.put_item(Item=d)
     logger.info("Data load Complete ")
         
-
+def deleteReadyFile(logger, bucketName , region , readyFile): 
+    client = boto3.client('s3' , region_name=region)
+    client.delete_object(Bucket=bucketName , Key=f'{readyFile}')
+    logger.info('Ready file deleted ')
+    
+    
 def lambda_handler(event,context) : 
     logging.basicConfig()
     logging.root.setLevel(logging.INFO)
@@ -31,6 +36,8 @@ def lambda_handler(event,context) :
     fileName = os.getenv('FILENAME')
     bucketName = os.getenv('BUCKETID')
     dbName = os.getenv('DYNAMODBTABLE')
+    readyFile = os.getenv('READYPATH')
+
     
     handle = 'LambdaLoader'
     logger = logging.getLogger(handle)
@@ -39,3 +46,4 @@ def lambda_handler(event,context) :
     # logger.info(f'Logs stream : {context['log_stream_name']}')
     data = readFileFromS3(logger, bucketName , fileName , regionName  )
     loadtoDB(logger , dbName , data,regionName)
+    deleteReadyFile(logger, bucketName , regionName , readyFile)
