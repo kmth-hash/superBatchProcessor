@@ -1,14 +1,17 @@
 from helpers.utils import * 
 
 def preprocess(spark , ASOFDATE , logger ):
-    res = None 
-    locationDF = readFile(spark , logger , 'src/enrichment/location-data.csv')
+    nameCsvFile = f"{os.getenv('INBOUND')}/{os.getenv('NAMESFILE')}"
+    locationCsvFile=f"{os.getenv('INBOUND')}/{os.getenv('LOCATIONFILE')}"
+    locationDF = readFile(spark , logger , locationCsvFile)
+    locationDF.show()
+    locationDF.printSchema()
     locationDF = locationDF.select(col("continent") , col("location")).withColumnRenamed("location" , "country")
     # locationDF.show()    
     locationDF=locationDF.filter(col('continent').isNotNull())
     
 
-    userDF = readFile(spark , logger , r'src/enrichment/names.csv')
+    userDF = readFile(spark , logger , nameCsvFile)
     userDF = userDF.select(col('Gender') , col("Child's First Name")).withColumnRenamed("Child's First Name",'userName')
     userDF.dropDuplicates(['userName'])
     logger.info(f'Total Users found : {userDF.count()}')
@@ -62,13 +65,14 @@ def mainSparkProcess(spark , ASOFDATE , logger ):
 
     srcDir = f"{os.getenv('OUTBOUNDTMP')}"
     destDir = f"{os.getenv('OUTBOUND')}"
-    destFileName = os.getenv('FINALFILE').replace('%s', ASOFDATE)
+    destFileName = os.getenv('FINALFILE')
     
 
     cleanedDF = preprocess(spark , ASOFDATE , logger )
     finalDF1 = countryStats(spark , logger , ASOFDATE , cleanedDF )
     
-    finalDF1.coalesce(1).write.csv(f"{srcDir}")
+    deleteData(spark , logger , srcDir)
+    finalDF1.coalesce(1).write.option("header","true").csv(f"{srcDir}")
 
     tmpFileCleanUp(spark , logger , srcDir, destDir, destFileName)
 

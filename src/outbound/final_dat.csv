@@ -1,0 +1,236 @@
+continent,country,Affected,Dead,Recovered,Not Vaccinated,Vaccinated
+Africa,Chad,219,276,119,276,338
+North America,Anguilla,226,275,123,275,349
+South America,Paraguay,221,294,117,294,338
+Europe,Russia,240,291,127,291,367
+Asia,Yemen,244,279,120,279,364
+Africa,Senegal,257,286,112,286,369
+Europe,Sweden,246,280,104,280,350
+Oceania,Tokelau,235,301,104,301,339
+Oceania,Kiribati,244,288,91,288,335
+South America,Guyana,233,304,114,304,347
+Africa,Eritrea,236,314,118,314,354
+Europe,Jersey,249,274,138,274,387
+Asia,Philippines,240,282,126,282,366
+Africa,Djibouti,219,299,129,299,348
+Oceania,Tonga,227,303,136,303,363
+Asia,Malaysia,246,290,130,290,376
+Asia,Singapore,219,283,106,283,325
+Oceania,Fiji,220,286,126,286,346
+Asia,Turkey,216,298,125,298,341
+North America,United States Virgin Islands,212,285,110,285,322
+Africa,Malawi,239,266,127,266,366
+Asia,Iraq,249,295,112,295,361
+North America,Sint Maarten (Dutch part),219,296,111,296,330
+Europe,Germany,240,293,129,293,369
+Oceania,Northern Mariana Islands,248,273,114,273,362
+Africa,Comoros,233,322,114,322,347
+Asia,Afghanistan,212,298,120,298,332
+Asia,Cambodia,234,299,126,299,360
+Asia,Jordan,229,316,136,316,365
+Asia,Maldives,249,307,116,307,365
+Africa,Rwanda,249,300,128,300,377
+Africa,Saint Helena,211,309,139,309,350
+Africa,Sudan,222,292,131,292,353
+Oceania,Palau,228,275,117,275,345
+Europe,France,222,273,129,273,351
+North America,Turks and Caicos Islands,231,318,114,318,345
+Europe,Greece,205,311,132,311,337
+Europe,Kosovo,219,279,113,279,332
+Asia,Sri Lanka,251,290,109,290,360
+North America,Montserrat,235,266,123,266,358
+North America,British Virgin Islands,226,300,123,300,349
+North America,Dominica,246,272,116,272,362
+Africa,Algeria,235,259,123,259,358
+Africa,Equatorial Guinea,258,294,123,294,381
+Africa,Togo,241,326,120,326,361
+Europe,Slovakia,231,304,110,304,341
+Africa,Reunion,239,294,119,294,358
+South America,Argentina,249,295,123,295,372
+Africa,Angola,226,302,129,302,355
+Europe,Belgium,223,297,103,297,326
+Europe,Vatican,253,289,124,289,377
+Europe,San Marino,224,307,95,307,319
+South America,Ecuador,239,299,111,299,350
+Asia,Qatar,229,293,117,293,346
+North America,Bonaire Sint Eustatius and Saba,240,299,114,299,354
+Africa,Lesotho,239,294,112,294,351
+Europe,Albania,239,280,132,280,371
+Africa,Madagascar,243,296,117,296,360
+Europe,Finland,246,294,132,294,378
+Oceania,New Caledonia,245,302,143,302,388
+Africa,Ghana,205,288,125,288,330
+Asia,Myanmar,258,286,108,286,366
+North America,Nicaragua,226,301,111,301,337
+Europe,Guernsey,204,291,104,291,308
+Africa,Benin,228,298,121,298,349
+South America,Peru,246,280,126,280,372
+Africa,Sierra Leone,229,294,103,294,332
+North America,Bahamas,242,284,116,284,358
+Asia,China,235,297,129,297,364
+North America,Curacao,248,285,109,285,357
+Asia,India,231,285,117,285,348
+North America,United States,213,292,111,292,324
+Europe,Belarus,228,285,131,285,359
+Oceania,American Samoa,234,295,104,295,338
+Asia,Kuwait,214,274,106,274,320
+Europe,Malta,237,288,129,288,366
+Africa,Sao Tome and Principe,233,301,118,301,351
+Oceania,Marshall Islands,239,285,115,285,354
+Africa,Somalia,253,289,110,289,363
+Oceania,Tuvalu,214,288,99,288,313
+South America,Chile,236,261,135,261,371
+North America,Puerto Rico,266,297,111,297,377
+Asia,Tajikistan,266,297,99,297,365
+North America,Martinique,254,284,110,284,364
+North America,Cayman Islands,238,275,126,275,364
+Europe,Isle of Man,236,300,130,300,366
+Europe,Croatia,241,286,121,286,362
+Africa,Burundi,251,282,118,282,369
+Europe,Andorra,257,298,117,298,374
+South America,Bolivia,239,295,131,295,370
+Africa,Nigeria,239,267,119,267,358
+Africa,Gabon,220,252,120,252,340
+Europe,Italy,236,277,137,277,373
+South America,Suriname,239,297,116,297,355
+Europe,Lithuania,226,291,113,291,339
+Europe,Norway,227,298,107,298,334
+Asia,Turkmenistan,210,283,121,283,331
+North America,Saint Pierre and Miquelon,232,310,123,310,355
+Europe,Spain,234,276,124,276,358
+North America,Cuba,222,252,108,252,330
+Africa,Mauritania,243,296,106,296,349
+Europe,Czechia,232,280,121,280,353
+North America,Guadeloupe,206,278,111,278,317
+Africa,Central African Republic,228,289,112,289,340
+Europe,Denmark,232,301,109,301,341
+Africa,Niger,250,290,122,290,372
+Asia,Bangladesh,258,298,124,298,382
+North America,Barbados,238,304,122,304,360
+Asia,Iran,227,305,124,305,351
+Europe,Ireland,232,288,117,288,349
+Oceania,Pitcairn,219,293,107,293,326
+Africa,Congo,234,295,110,295,344
+Europe,Liechtenstein,242,291,129,291,371
+Asia,Laos,245,302,111,302,356
+Asia,Thailand,249,316,129,316,378
+Asia,Bhutan,237,268,104,268,341
+Europe,Monaco,237,289,136,289,373
+Africa,Morocco,258,293,133,293,391
+Africa,Cape Verde,238,278,115,278,353
+North America,Panama,225,307,116,307,341
+Asia,Hong Kong,230,284,114,284,344
+Oceania,Nauru,228,252,133,252,361
+Europe,Ukraine,258,282,110,282,368
+South America,Venezuela,233,294,120,294,353
+Europe,Iceland,225,294,112,294,337
+Asia,Israel,244,299,110,299,354
+North America,Saint Barthelemy,239,278,125,278,364
+North America,Saint Kitts and Nevis,244,298,123,298,367
+Europe,Faeroe Islands,218,298,121,298,339
+Oceania,French Polynesia,250,275,97,275,347
+Asia,Oman,234,310,119,310,353
+Asia,North Korea,225,276,113,276,338
+Asia,South Korea,238,270,115,270,353
+Europe,Cyprus,240,302,113,302,353
+Europe,Gibraltar,237,256,115,256,352
+Asia,Palestine,219,271,96,271,315
+South America,Uruguay,230,300,128,300,358
+Africa,Cote d'Ivoire,237,270,117,270,354
+North America,Mexico,209,278,111,278,320
+North America,Aruba,239,301,115,301,354
+Europe,Estonia,239,325,123,325,362
+Asia,Georgia,230,256,119,256,349
+Europe,Montenegro,261,320,122,320,383
+Africa,Zimbabwe,233,304,129,304,362
+Asia,Indonesia,230,343,124,343,354
+North America,Saint Vincent and the Grenadines,239,316,119,316,358
+Oceania,Guam,238,295,125,295,363
+North America,Guatemala,239,316,124,316,363
+Asia,Mongolia,257,301,107,301,364
+Asia,Azerbaijan,219,272,118,272,337
+Africa,Libya,231,308,114,308,345
+North America,Grenada,222,285,102,285,324
+Asia,Armenia,253,280,125,280,378
+Africa,Liberia,267,277,115,277,382
+Africa,Tunisia,247,276,118,276,365
+North America,Honduras,228,291,116,291,344
+Asia,Syria,214,285,123,285,337
+North America,Trinidad and Tobago,233,286,124,286,357
+Asia,Saudi Arabia,231,294,114,294,345
+Africa,Uganda,241,289,114,289,355
+Oceania,Wallis and Futuna,249,295,116,295,365
+South America,French Guiana,225,278,141,278,366
+Africa,Mayotte,228,275,109,275,337
+Africa,Namibia,233,266,119,266,352
+Europe,Switzerland,236,304,109,304,345
+Africa,Zambia,223,293,115,293,338
+Africa,Ethiopia,228,290,135,290,363
+Africa,Eswatini,223,280,126,280,349
+North America,Jamaica,226,297,124,297,350
+Europe,Latvia,246,295,107,295,353
+Asia,Brunei,233,287,108,287,341
+Africa,South Sudan,238,293,107,293,345
+Asia,United Arab Emirates,241,315,104,315,345
+North America,Saint Lucia,252,264,113,264,365
+Africa,Guinea,233,315,129,315,362
+North America,Canada,231,307,112,307,343
+Asia,Timor,260,282,117,282,377
+Africa,Seychelles,220,299,114,299,334
+Asia,Kyrgyzstan,236,284,116,284,352
+Europe,North Macedonia,242,282,126,282,368
+Oceania,Samoa,218,294,101,294,319
+Asia,Uzbekistan,236,281,101,281,337
+Africa,Mozambique,236,291,129,291,365
+Oceania,Cook Islands,231,274,102,274,333
+North America,Belize,223,281,120,281,343
+South America,Brazil,224,298,135,298,359
+Africa,Gambia,253,290,108,290,361
+Africa,Kenya,235,286,117,286,352
+Asia,Lebanon,238,283,112,283,350
+North America,Antigua and Barbuda,238,274,100,274,338
+Europe,Slovenia,252,297,113,297,365
+North America,Dominican Republic,221,338,120,338,341
+Africa,Botswana,230,293,118,293,348
+Asia,Japan,233,284,121,284,354
+Africa,Tanzania,245,311,141,311,386
+South America,Falkland Islands,232,266,111,266,343
+Europe,Luxembourg,234,300,115,300,349
+Oceania,New Zealand,245,284,117,284,362
+Europe,Bosnia and Herzegovina,244,291,132,291,376
+North America,Greenland,236,289,119,289,355
+North America,Haiti,218,276,109,276,327
+Europe,Poland,238,300,116,300,354
+Oceania,Micronesia (country),237,306,109,306,346
+Europe,Portugal,218,275,131,275,349
+Oceania,Australia,215,309,119,309,334
+Africa,Cameroon,240,287,113,287,353
+Oceania,Papua New Guinea,231,303,137,303,368
+Africa,Guinea-Bissau,238,275,113,275,351
+Europe,Romania,228,275,121,275,349
+Europe,Bulgaria,235,308,121,308,356
+Oceania,Solomon Islands,238,300,116,300,354
+Europe,Austria,249,287,127,287,376
+Asia,Nepal,247,299,116,299,363
+North America,Costa Rica,240,311,112,311,352
+Africa,Egypt,222,285,109,285,331
+North America,El Salvador,253,286,121,286,374
+Asia,Kazakhstan,211,290,126,290,337
+Europe,Serbia,223,282,116,282,339
+Africa,Burkina Faso,231,305,125,305,356
+Africa,South Africa,253,291,111,291,364
+North America,Bermuda,228,279,111,279,339
+Asia,Bahrain,217,300,110,300,327
+North America,Saint Martin (French part),253,279,123,279,376
+South America,Colombia,233,283,119,283,352
+Europe,Hungary,226,284,114,284,340
+Africa,Democratic Republic of Congo,236,272,127,272,363
+Asia,Pakistan,206,313,117,313,323
+Oceania,Vanuatu,244,276,107,276,351
+Oceania,Niue,218,267,109,267,327
+Africa,Mauritius,210,274,108,274,318
+Europe,Moldova,229,294,117,294,346
+Europe,United Kingdom,225,256,120,256,345
+Asia,Vietnam,266,279,106,279,372
+Africa,Mali,225,294,132,294,357
+Europe,Netherlands,232,294,108,294,340

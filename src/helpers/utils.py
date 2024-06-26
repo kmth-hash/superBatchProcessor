@@ -26,12 +26,13 @@ def initLogger(ASOFDATE='19900101'):
     return logger
 
 def initEnv(stage='DEV'):
+    prjPath = '/'.join(os.path.abspath(__file__).split('/')[:-2])
     if stage=='PROD' : 
-        load_dotenv('src/.env.prod')
+        load_dotenv(f'{prjPath}/.env.prod')
     elif stage=='DEV' : 
-        load_dotenv('src/.env.dev')
+        load_dotenv(f'{prjPath}/.env')
     else : 
-        load_dotenv('src/.env.dev')
+        load_dotenv(f'{prjPath}/.env.dev')
 
 def getExecTime():
     d = datetime.datetime.now()
@@ -40,7 +41,7 @@ def getExecTime():
     return(ASOFDATE)
 
 def initSpark():
-    spark = SparkSession.builder.master('local[1]').appName('Covid-dummy').getOrCreate()
+    spark = SparkSession.builder.master('local[1]').appName('superBatchProcessor').getOrCreate()
     sc = spark.sparkContext
     sc.setLogLevel('ERROR')
     return spark 
@@ -129,9 +130,10 @@ def deleteData(spark , logger , location) :
     try:
         hadoop , _ , fs = configure_hadoop(spark)
         if fs.exists(hadoop.fs.Path(location)) : 
-            fs.delete(hadoop.fs.Path(location))
-    except:
+            fs.delete(hadoop.fs.Path(location) , True)
+    except Exception as ex:
         logger.info('Error in Delete operation. ')
+        logger.info(ex)
 
 def copyFileToDest(spark , logger , srcLoc , destLoc , fileName) : 
     try:
